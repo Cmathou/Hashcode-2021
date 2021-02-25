@@ -40,7 +40,10 @@ def main(file):
             if val[i] != 0 :
                 sfin.append(s[i])
                 valfin.append(val[i])
-        
+
+        sfin = [x for _,x in sorted(zip(valfin, sfin))]
+        valfin = sorted(valfin)
+
         output.setIntersection(k, sfin, valfin)
     print("end file: " + str(file))
 

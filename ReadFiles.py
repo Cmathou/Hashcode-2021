@@ -40,7 +40,7 @@ class ReadFiles:
 			[begin, end, name, time] = [j for j in i.split()]
 
 			self.streets[name] = [int(begin), int(end), int(time), 0]
-			self.streetOut[int(end) - 1].append(name)
+			self.streetOut[int(end)].append(name)
 
 		currentId = 0
 

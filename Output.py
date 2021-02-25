@@ -15,6 +15,7 @@ class Output:
         with open(self._file, "w") as file:
             content[0] = str(int(content[0]) + 1) + '\n'
             content.append(str(intersection) + '\n')
+            content.append(str(len(streets)) + '\n')
             for i in range(len(streets)):
                 content.append(streets[i] + ' ' + str(time[i]) + '\n')
             file.writelines(content)

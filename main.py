@@ -27,6 +27,7 @@ def main(file):
         val = (np.ceil(np.array(val)/mini)).astype(int)
 
         output.setIntersection(k, s, val)
+    print("end file: " + file)
 
 
 

@@ -51,8 +51,4 @@ class ReadFiles:
 			currentId+=1
 
 	def getStreets(self, intersection):
-		streetsToRet = []
-		for name, data in self.streets.items():
-			if (data[1] == intersection):
-				streetsToRet.append(name)
-		return streetsToRet
+		return self.streetOut

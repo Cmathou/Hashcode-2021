@@ -18,7 +18,10 @@ def main(file):
         for i in s :
             mySum += conf.streets[i][3]
 
-        val = [ceil(conf.streets[i][3]/max(1,mySum) * conf.duration) for i in s]
+        if mySum == 0 :
+            continue
+        
+        val = [ceil(conf.streets[i][3]/mySum * conf.duration) for i in s]
 
         for i in val :
             if i != 0 and i < mini:

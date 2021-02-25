@@ -25,6 +25,7 @@ class ReadFiles:
 
 	streets = {} #{name:[begin, end, duration]}
 	cars = {} #{identity:[streetsUsed]}
+	streetOut = []
 
 	def __init__(self, fileNbr):
 		data = open("problem/" + inFile[fileNbr], "r")
@@ -32,12 +33,14 @@ class ReadFiles:
 		data.close()
 
 		[self.duration, self.intersectionsNumber, self.streetsNumber, self.carNumber, self.bonus] = [int(i) for i in lines[0].split()]
-
+		self.streetOut = [[]] * self.intersectionsNumber
 
 		for i in lines[1:self.streetsNumber+1]:
 			[begin, end, name, time] = [j for j in i.split()]
-			
+
 			self.streets[name]=[int(begin), int(end), int(time), 0]
+
+			self.streetOut[int(end)].append(self.streets[name])
 
 		currentId = 0
 
@@ -48,8 +51,4 @@ class ReadFiles:
 			currentId+=1
 
 	def getStreets(self, intersection):
-		streetsToRet = []
-		for name, data in self.streets.items():
-			if (data[1] == intersection):
-				streetsToRet.append(name)
-		return streetsToRet
+		return self.streetOut

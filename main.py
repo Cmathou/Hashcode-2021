@@ -6,7 +6,7 @@ conf = readFiles(0)
 output = Output(0)
 
 for k in range(conf.intersectionNumber) :
-    s = getStreet(k)
+    s = getStreets(k)
 
     output.setIntersection(k, s, [1 for i in range(len(s))])
 

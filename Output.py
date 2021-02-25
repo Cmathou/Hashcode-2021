@@ -4,7 +4,7 @@ class Output:
     _file = ""
 
     def __init__(self, fileNbr):
-        self._file = "output/" + self._outFile(fileNbr)
+        self._file = "output/" + self._outFile[fileNbr]
         with open(self._file, "w+") as file:
             file.write('0\n')
 
@@ -14,8 +14,8 @@ class Output:
 
         with open(self._file, "w") as file:
             content[0] = str(int(content[0]) + 1) + '\n'
+            content.append(str(intersection) + '\n')
             for i in range(len(streets)):
-                content.append(intersection + '\n')
-                content.append(streets[i] + ' ' + time[i] + '\n')
+                content.append(streets[i] + ' ' + str(time[i]) + '\n')
             file.writelines(content)
 

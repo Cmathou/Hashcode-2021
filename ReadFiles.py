@@ -39,7 +39,7 @@ class ReadFiles:
 		for i in lines[1:self.streetsNumber+1]:
 			[begin, end, name, time] = [j for j in i.split()]
 
-			self.streets[name] = [int(begin), int(end), int(time),0]
+			self.streets[name] = [int(begin), int(end), int(time), 0]
 			self.streetOut[int(end) - 1].append(name)
 
 		currentId = 0

@@ -1,8 +1,8 @@
-from Output import Output
-import readFiles
+from Output import *
+from readFiles import *
 
 
-conf = readFiles(0)
+conf = ReadFiles(0)
 output = Output(0)
 
 for k in range(conf.intersectionNumber) :

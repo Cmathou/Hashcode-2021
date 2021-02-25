@@ -1,9 +1,10 @@
 class Output:
 
+    _outFile = ["a_out.txt", "b_out.txt", "c_out.txt", "d_out.txt", "e_out.txt", "f_out.txt"]
     _file = ""
 
-    def __init__(self, file):
-        self._file = "output/" + file
+    def __init__(self, fileNbr):
+        self._file = "output/" + self._outFile(fileNbr)
         with open(self._file, "w+") as file:
             file.write('0\n')
 

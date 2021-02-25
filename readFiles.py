@@ -16,7 +16,7 @@ streetsUsed=0
 identity=0
 name="test"
 
-class Configuration:
+class ReadFiles:
 	duration = 0
 	intersectionsNumber = 0
 	streetsNumber = 0
@@ -25,31 +25,31 @@ class Configuration:
 
 	streets = {} #{name:[begin, end, duration]}
 	cars = {} #{identity:[streetsUsed]}
-    
+
+	def __init__(self, fileNbr):
+		data = open("problem/" + inFile[fileNbr], "r")
+		lines = data.readlines()
+		data.close()
+
+		[self.duration, self.intersectionsNumber, self.streetsNumber, self.carNumber, self.bonus] = [int(i) for i in lines[0].split()]
 
 
-def lecture(fileNbr):
-	data = open("problem/" + inFile[fileNbr], "r")
-	lines = data.readlines()
-	data.close()
+		for i in lines[1:self.streetsNumber+1]:
+			[begin, end, name, time] = [j for j in i.split()]
+			
+			self.streets[name]=[int(begin), int(end), int(time)]
 
-	Config = Configuration()
+		currentId = 0
 
-	[Config.duration, Config.intersectionsNumber, Config.streetsNumber, Config.carNumber, Config.bonus] = [int(i) for i in lines[0].split()]
+		for i in lines[self.streetsNumber+1:]:
+			number=int(i.split()[0])
 
+			self.cars[currentId]=i.split()[1:]
+			currentId+=1
 
-	for i in lines[1:Config.streetsNumber+1]:
-		[begin, end, name, time] = [j for j in i.split()]
-		
-		Config.streets[name]=[int(begin), int(end), int(time)]
-
-	currentId = 0
-
-	for i in lines[Config.streetsNumber+1:]:
-		number=int(i.split()[0])
-
-		Config.cars[currentId]=i.split()[1:]
-		currentId+=1
-
-
-	return Config
+	def getStreets(self, intersection)
+		streetsToRet = []
+		for name, data in self.streets.items():
+			if (data[1] == intersection):
+				streetsToRet.append(name)
+		return streetsToRet

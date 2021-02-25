@@ -47,7 +47,7 @@ class ReadFiles:
 			self.cars[currentId]=i.split()[1:]
 			currentId+=1
 
-	def getStreets(self, intersection)
+	def getStreets(self, intersection):
 		streetsToRet = []
 		for name, data in self.streets.items():
 			if (data[1] == intersection):

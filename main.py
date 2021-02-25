@@ -29,6 +29,10 @@ def main(file):
         
         val = (np.ceil(np.array(val)/mini)).astype(int)
 
+        for i in range(len(val)):
+            if val[i] > 0.3 * conf.duration :
+                val[i] = 0.3 * conf.duration
+
         sfin = []
         valfin = []
 

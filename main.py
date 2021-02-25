@@ -21,7 +21,7 @@ def main(file):
         if mySum == 0 :
             continue
         
-        val = [ceil(conf.streets[i][3]/mySum * conf.duration) for i in s]
+        val = [ceil(conf.streets[i][3]/mySum * 5) for i in s]
 
         for i in val :
             if i != 0 and i < mini:
@@ -29,10 +29,10 @@ def main(file):
         
         val = (np.ceil(np.array(val)/mini)).astype(int)
 
-        for i in range(len(val)):
-            if val[i] > 0.3 * conf.duration :
-                val[i] = 0.3 * conf.duration
-
+        """for i in range(len(val)):
+            if val[i] > 10 :
+                val[i] = 10
+"""
         sfin = []
         valfin = []
 

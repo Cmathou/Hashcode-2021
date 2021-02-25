@@ -26,7 +26,15 @@ def main(file):
         
         val = (np.ceil(np.array(val)/mini)).astype(int)
 
-        output.setIntersection(k, s, val)
+        sfin = []
+        valfin = []
+
+        for i in range(len(val)):
+            if val[i] != 0 :
+                sfin.append(s[i])
+                valfin.append(val[i])
+        
+        output.setIntersection(k, sfin, valfin)
 
 
 

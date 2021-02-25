@@ -5,6 +5,7 @@ import time
 import progressbar
 from multiprocessing import Process
 from math import ceil
+import numpy as np
 
 def main(file):
     conf = ReadFiles(file)
@@ -12,12 +13,20 @@ def main(file):
     tmin, conf = computeMinTime(conf)
     for k in progressbar.progressbar(range(conf.intersectionsNumber)):
         s = conf.getStreets(k)
-        mini = 10000000
+        mini = 100000000
+        mySum = 0
         for i in s :
-            if conf.streets[i][3] != 0 and conf.streets[i][3] < mini:
-                mini = conf.streets[i][3]
+            mySum += conf.streets[i][3]
 
-        output.setIntersection(k, s, [ceil(conf.streets[i][3]/mini) for i in s])
+        val = [ceil(conf.streets[i][3]/max(1,mySum) * conf.duration) for i in s]
+
+        for i in val :
+            if i != 0 and i < mini:
+                mini = i
+        
+        val = (np.ceil(np.array(val)/mini)).astype(int)
+
+        output.setIntersection(k, s, val)
 
 
 

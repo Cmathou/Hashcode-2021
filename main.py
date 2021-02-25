@@ -35,6 +35,7 @@ def main(file):
                 valfin.append(val[i])
         
         output.setIntersection(k, sfin, valfin)
+    print("end file: " + file)
 
 
 
